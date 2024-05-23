@@ -8,7 +8,7 @@ class List{
     private:
         int size;
         int MAX;
-        T arr[];
+        T* arr;
 
     public:
         //constructor
@@ -45,12 +45,12 @@ class List{
 
         //destructor
         ~List() {
-
+            destructor();
         }
 
         //destructor mimic
         void destructor() {
-
+            delete [] arr;
         }
 
         //isEmpty
@@ -69,7 +69,7 @@ class List{
 
         //push
         void push(T element, int index) {
-            if (index < 0 || index >= size) {
+            if (index < 0 || index > size) {
                 throw std::out_of_range("Index " + std::to_string(index) + " is out of bounds.");
             }
 
@@ -79,15 +79,16 @@ class List{
             }
 
             if (MAX <= size) {
-                T temp = new T[MAX *= 2];
+                T* temp = new T[MAX *= 2];
                 for (int i = 0; i < size; i++) {
-                    temp[i] = this->arr[i];
+                    temp[i] = arr[i];
                 }
+                destructor();
                 this->arr = temp;
             }
 
             for (int i = size; i > index; i--) {
-                    arr[i] == arr[i - 1];
+                    arr[i] = arr[i - 1];
             }
             this->arr[index] = element;
 
@@ -101,6 +102,10 @@ class List{
 
         //print
         void print() {
+            for (int i = 0; i < size; i++) {
+                std::cout << this->arr[i] << ' ';
+            }
+            std::cout << '\n';
 
         }
 
