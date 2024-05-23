@@ -6,9 +6,9 @@
 template <typename T>
 class List{
     private:
-        T arr[];
         int size;
         int MAX;
+        T arr[];
 
     public:
         //constructor
@@ -31,9 +31,9 @@ class List{
         // }
 
         //copy constructor mimic
-        void copy(const T &other[]) {
+        // void copy(const T &other[]) {
 
-        }
+        // }
 
         //operator = 
         // const operator= (const T &other) {
@@ -63,7 +63,7 @@ class List{
         }
 
         //size/length
-        int size() {
+        int length() {
             return size;
         }
 
