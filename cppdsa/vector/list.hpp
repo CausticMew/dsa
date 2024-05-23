@@ -26,14 +26,21 @@ class List{
         }
 
         //copy constructor
-        // List(const T &other[]) {
-            
-        // }
+        List(const List<T> &other) {
+            copy(other);
+        }
 
         //copy constructor mimic
-        // void copy(const T &other[]) {
+        void copy(const List<T> &other) {
+            this->MAX = other.MAX;
+            this->size = other.size;
 
-        // }
+            this->arr = new T[size];
+
+            for (int i = 0; i < other.size; i++) {
+                this->arr[i] = other[i];
+            }
+        }
 
         //operator = 
         // const operator= (const T &other) {
@@ -60,6 +67,10 @@ class List{
             // }
             // return false;
             return size == 0;
+        }
+
+        int getMax() {
+            return MAX;
         }
 
         //size/length
