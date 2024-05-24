@@ -43,12 +43,12 @@ class List{
         }
 
         //operator = 
-        // const operator= (const T &other) {
-        //     if (this != &other) {
-        //         destructor();
-        //         copy(other);
-        //     }
-        // }
+        const operator= (const T &other) {
+            if (this != &other) {
+                destructor();
+                copy(other);
+            }
+        }
 
         //destructor
         ~List() {
@@ -79,7 +79,7 @@ class List{
         }
 
         //push
-        void push(T element, int index) {
+        void push(int index, T element) {
             if (index < 0 || index > size) {
                 throw std::out_of_range("Index " + std::to_string(index) + " is out of bounds.");
             }
@@ -122,12 +122,22 @@ class List{
 
         //get
         T get(int index) {
-
+            if (index < 0 || index >= size) {
+                throw std::out_of_range("Index " + std::to_string(index) + " is out of bounds.");
+            }
+            
+            return this->arr[index];
         }
 
         //set
         T set(int index, T element) {
+            if (index < 0 || index >= size) {
+                throw std::out_of_range("Index " + std::to_string(index) + " is out of bounds.");
+            }
 
+            T temp = this->arr[index];
+            this->arr[index] = element;
+            return temp;
         }
 
         //indexOf
@@ -138,3 +148,18 @@ class List{
 
 
 #endif
+
+// construtor
+// copy constructor (use copy mimic)
+// copy mimic
+// operator= overload ( just destroy and copy)
+// destructor (free memory)
+// destroy(to be called in destructor)
+// isEmpty (check if list is empty)
+// length / size (get size)
+// push (add element at an index)
+// remove (remove at an index)
+// print (prints list
+// get(get at an index)
+// set (replace at an index)
+// indexOf(returns the index of an element
