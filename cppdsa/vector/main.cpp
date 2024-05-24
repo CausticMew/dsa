@@ -23,9 +23,7 @@ int main() {
 
     //get test
     std::cout << vect.get(0) << '\n';
-    std::cout << "is error here?\n" << vect.length() << '\n';
     std::cout << vect.get(5) << '\n';
-    std::cout << "is error here?\n";
     std::cout << vect.get(10) << '\n';
     // vect.get(12);
     // vect.get(-1);
@@ -69,5 +67,4 @@ int main() {
     //reverse test
     vect.reverse();
     vect.print();
-
 }
