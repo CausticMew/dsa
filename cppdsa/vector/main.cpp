@@ -6,18 +6,35 @@ int main() {
 
     List<std::string> vect;
 
-//add test
-    vect.push("I", 0);
-    vect.push("am", 1);
-    vect.push("a", 2);
-    vect.push("dormant", 3);
-    vect.push("volcano", 4);
-    vect.push("and", 5);
-    vect.push("I", 6);
-    vect.push("love", 7);
-    vect.push("lava", 8);
-    vect.push("cakes", 9);
+    //add test
+    vect.push(0, "I");
+    vect.push(1, "am");
+    vect.push(2, "a");
+    vect.push(3, "dormant" );
+    vect.push(4, "volcano");
+    vect.push(5, "and");
+    vect.push(6, "I");
+    vect.push(7, "love");
+    vect.push(8, "lava");
+    vect.push(9, "cakes");
     vect.print();
-    vect.push("Hello,", 0);
+    vect.push(0, "Hello,");
     vect.print();
+
+    //get test
+    std::cout << vect.get(0) << '\n';
+    std::cout << vect.get(5) << '\n';
+    std::cout << vect.get(10) << '\n';
+    // vect.get(12);
+    // vect.get(-1);
+
+    //set test
+    vect.set(10, "cakes!");
+    vect.set(4, "cannibalistic");
+    vect.set(5, "zebra");
+    vect.set(9, "zebra");
+    vect.print();
+    vect.set(11, "fisherrr!");
+
+
 }
