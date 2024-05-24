@@ -1,6 +1,7 @@
 #ifndef LIST_HPP
 #define LIST_HPP
 #include <iostream>
+#include <algorithm>
 
 
 template <typename T>
@@ -122,6 +123,10 @@ class List{
             return removed;
         }
 
+        void clear() {
+            size = 0;
+        }
+
         //print
         void print() {
             for (int i = 0; i < size; i++) {
@@ -159,6 +164,17 @@ class List{
             }
 
             return -1;
+        }
+
+        void reverse() {
+            T temp;
+            int length = size;
+            for (int i = 0; i < size / 2; i++) {
+                temp = this->arr[i];
+                this->arr[i] = this->arr[length - 1];
+                this->arr[length - 1] = temp;
+                length--;
+            }
         }
 };
 

@@ -23,10 +23,14 @@ int main() {
 
     //get test
     std::cout << vect.get(0) << '\n';
+    std::cout << "is error here?\n" << vect.length() << '\n';
     std::cout << vect.get(5) << '\n';
+    std::cout << "is error here?\n";
     std::cout << vect.get(10) << '\n';
     // vect.get(12);
     // vect.get(-1);
+
+    std::cout << "is error here?\n";
 
     //set test
     vect.set(10, "cakes!");
@@ -55,5 +59,15 @@ int main() {
     vect.print();
     vect.remove(vect.length() - 1);
     vect.print();
-    vect.remove(11);
+    // vect.remove(11);
+
+    //clear test
+    std::cout << vect2.length() << '\n';
+    vect2.clear();
+    std::cout << vect2.length() << '\n';
+
+    //reverse test
+    vect.reverse();
+    vect.print();
+
 }
