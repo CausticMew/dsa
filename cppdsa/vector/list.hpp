@@ -43,12 +43,12 @@ class List{
         }
 
         //operator = 
-        // const operator= (const T &other) {
-        //     if (this != &other) {
-        //         destructor();
-        //         copy(other);
-        //     }
-        // }
+        const List<T> operator= (const T &other) {
+            if (this != &other) {
+                destructor();
+                copy(other);
+            }
+        }
 
         //destructor
         ~List() {
@@ -143,13 +143,11 @@ class List{
         //indexOf
         int indexOf(T element) {
             for (int i = 0; i < size; i++) {
-                if (element == this->arr[i]) {
+                if (element == this->arr[i])
                     return i;
-                } else {
-                    std::cout << "Element not in array.\n";
-                    return 0;
-                }
             }
+
+            return -1;
         }
 };
 

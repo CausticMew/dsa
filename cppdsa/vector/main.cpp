@@ -34,7 +34,19 @@ int main() {
     vect.set(5, "zebra");
     vect.set(9, "zebra");
     vect.print();
-    vect.set(11, "fisherrr!");
+    // vect.set(11, "fisherrr!");
+
+    //indexOf test
+    std::cout << vect.indexOf("Hello,") << '\n';
+    std::cout << vect.indexOf("zebra") << '\n';
+    std::cout << vect.indexOf("cakes!") << '\n';
+    std::cout << vect.indexOf("lava") << '\n';
+
+    //operator= test
+    List<std::string> vect2;
+    vect2 = vect;
+
+    vect2.print();
 
 
 }
