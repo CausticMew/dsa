@@ -108,7 +108,18 @@ class List{
 
         //remove
         T remove(int index) {
+            if (index < 0 || index >= size || size == 0) {
+                throw std::out_of_range("Index " + std::to_string(index) + " is out of bounds.");
+            }
 
+            T removed = this->arr[index];
+
+            for (int i = index; i < size; i++) {
+                this->arr[i] = this->arr[i + 1];
+            }
+
+            size--;
+            return removed;
         }
 
         //print

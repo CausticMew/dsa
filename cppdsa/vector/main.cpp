@@ -48,5 +48,12 @@ int main() {
 
     vect2.print();
 
-
+    //remove test
+    vect.remove(0);
+    vect.print();
+    vect.remove(5);
+    vect.print();
+    vect.remove(vect.length() - 1);
+    vect.print();
+    vect.remove(11);
 }
