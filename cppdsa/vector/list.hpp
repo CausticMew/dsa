@@ -97,6 +97,7 @@ class List{
                 }
                 destructor();
                 this->arr = temp;
+                temp = nullptr;
                 delete [] temp;
             }
 
@@ -109,11 +110,21 @@ class List{
         }
 
         void rotate(int index) {
-            T* temp;
+            T temp[size];
+            //1, 2, 3, 4, 5, 6
 
             for (int i = 0; i < size; i++) {
-
+                temp[i] = this->arr[i];
             }
+
+            for (int i = 0; i < size - index; i++) {
+                this->arr[i] = temp[index + i];
+            }
+
+            for (int i = 0; i < index; i++) {
+                this->arr[size - index + i] = temp[i];
+            }
+
         }
 
         //remove
