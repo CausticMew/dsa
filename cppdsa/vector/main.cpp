@@ -15,8 +15,6 @@ int main() {
     vect3.push(5, 6);
     vect3.print();
 
-
-
     // //add test
     // vect.push(0, "1");
     // vect.push(1, "2");
@@ -77,7 +75,17 @@ int main() {
     // vect.reverse();
     // vect.print();
 
-    // rotate test
-    vect3.rotate(2);
-    vect3.print();
+    // // rotate test
+    // vect3.rotate(2);
+    // vect3.print();
+
+    //removeRange test
+    // vect3.removeRange(2, 3);
+    // vect3.print();
+
+    //shrink test
+    vect3.remove(5);
+    vect3.remove(4);
+    vect3.shrink();
+    std::cout << "SIZE: " << vect3.getMax() << '\n';
 }

@@ -109,9 +109,23 @@ class List{
             size++;
         }
 
+        //shrink
+        void shrink() {
+            if (size / 2 <= MAX) {
+                T* temp = new T[MAX /= 2];
+                for (int i = 0; i < size; i++) {
+                    temp[i] = arr[i];
+                }
+                destructor();
+                this->arr = temp;
+                temp = nullptr;
+                delete [] temp;
+            }
+        }
+
+        //rotate
         void rotate(int index) {
             T temp[size];
-            //1, 2, 3, 4, 5, 6
 
             for (int i = 0; i < size; i++) {
                 temp[i] = this->arr[i];
@@ -124,7 +138,15 @@ class List{
             for (int i = 0; i < index; i++) {
                 this->arr[size - index + i] = temp[i];
             }
+        }
 
+        //removeRange
+        void removeRange(int start, int end) {
+            int shift = (end - start + 1);
+            for (int i = start; i < size - shift; i++) {
+                arr[i] = arr[i + shift];
+            }
+            size -= (end - start + 1);
         }
 
         //remove
