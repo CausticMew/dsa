@@ -83,9 +83,13 @@ int main() {
     // vect3.removeRange(2, 3);
     // vect3.print();
 
-    //shrink test
-    vect3.remove(5);
-    vect3.remove(4);
-    vect3.shrink();
-    std::cout << "SIZE: " << vect3.getMax() << '\n';
+    // //shrink test
+    // vect3.remove(5);
+    // vect3.remove(4);
+    // vect3.shrink();
+    // std::cout << "SIZE: " << vect3.getMax() << '\n';
+
+    //subArray test
+    vect3.subArray(3, 5);
+    vect3.print();
 }

@@ -165,6 +165,19 @@ class List{
             return removed;
         }
 
+        T* subArray(int start, int end) {
+            T temp[size - end - start + 1];
+
+            int inc = start;
+            for (int i = start; i < end; i++) {
+                temp[i] = arr[i];
+            }
+            
+            arr = temp;
+
+            return arr;
+        }
+
         void clear() {
             size = 0;
         }
