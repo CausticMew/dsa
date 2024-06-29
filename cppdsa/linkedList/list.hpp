@@ -21,13 +21,48 @@ class List {
 
     //destructor
 
-    //destructor mimic
+    //destructor mimic - set size to 0
 
     //operator overload = 
 
-    //get
+    //get - gets element at index
+    T get(int index) {
+        if (index < 0 || index >= size) {
+            std::cerr << "Index is out of bounds.\n";
+            return static_cast<T>(-1);
+        }
 
-    //set
+        node<T>* walker = this->head;
+        
+        for (int i = 0; i < index; i++) {
+            walker = walker->next;
+        }
+
+        return walker->value;
+    }
+
+    //set - sets element at index
+    T set(int index, T element) {
+        if (index < 0 || index >= size) {
+            std::cerr << "Index is out of bounds.\n";
+            return static_cast<T>(-1);
+        }
+
+        node<T>* walker = this->head;
+        
+        for (int i = 0; i < index; i++) {
+            walker = walker->next;
+        }
+        T temp = walker->value;
+        walker->value = element;
+
+        return temp;
+    }
+
+    //length
+    int length() {
+        return size;
+    }
 
     //isEmpty
     bool isEmpty() {
@@ -37,6 +72,7 @@ class List {
     //push
     void push(T element) {
         node<T>* pushed = new node<T>(element);
+        size++;
         if (this->head == nullptr) {
             this->head = pushed;
         } else {
@@ -49,17 +85,72 @@ class List {
     }
 
     //addAt
+    void addAt(int index, T element) {
+        node<T>* added = new node<T>(element);
 
+        if (index == 0) {
+        added->next = this->head;
+        this->head = added;
+        }
+
+        int in = 0;
+        node<T>* walker = this->head;
+        
+        while(walker != nullptr && in < index - 1) {
+            walker->next = walker;
+            in++;
+        }
+
+        added->next = walker->next;
+        walker->next = added;
+    }
 
     //remove
+    T remove(int index) {
+        if (isEmpty()) {
+            std::cout << "List is empty!\n";
+            return static_cast<T>(-1);
+        }
 
-    //clear
+        if (index < 0 || index >= size) {
+            std::cerr << "Index is out of bounds.\n";
+            return static_cast<T>(-1);
+        }
 
-    //indexOf
+        node<T>* walker = this->head;
+        T value;
 
-    //indexesOf
+        if (index == 0) {
+            value = walker->value;
+            head = head->next;
+        } else {
+            node<T>* prev = nullptr;
 
-    //reverse
+            for (int i = 0; i < index; i++) {
+                prev = walker;
+                walker = walker->next;
+            }
+
+            value = walker->value;
+
+            if (index < size - 1) {
+                prev->next = walker->next;
+            } else {
+                prev->next = nullptr;
+            }
+        }
+        size--;
+        delete walker;
+        return value;
+    }
+
+    //clear - call destructor
+
+    //indexOf - returns index takes in element, gives the index of the first ocurrence
+
+    //indexesOf - returns an array 
+
+    //reverse - reverses linked list
 
     //print
     void print() {
@@ -68,6 +159,21 @@ class List {
             std::cout << walker->value << ' ';
             walker = walker->next;
         }
+        std::cout << '\n';
+    }
+
+    //search
+    bool search(T element) {
+        node <T>* walker = head;
+        while(walker != nullptr) {
+            if (walker->value == element) {
+                std::cout << "Element Found!\n";
+                return true;
+            }
+            walker = walker->next;
+        }
+        std::cout << "Element Not Found!\n";
+        return false;
     }
 };
 
