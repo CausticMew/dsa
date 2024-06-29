@@ -3,6 +3,7 @@
 
 int main() {
     List <int> l;
+    List <int> l2;
 
     //push test
     l.push(7);
@@ -37,10 +38,15 @@ int main() {
     l.print();
     l.set(2, 6);
     l.print();
+    l.set(7, 8);
+    // l2.set(0, 15);
+    // l2.print();
 
     //get test
     std::cout << "Index 0: " << l.get(0) << '\n';
     std::cout << "Index 1: " << l.get(1) << '\n';
     std::cout << "Index 2: " << l.get(2) << '\n';
+    std::cout << "Index 0: " << l2.get(0) << '\n';
+    
 
 }

@@ -17,7 +17,11 @@ class List {
 
     //copy constructor
 
+
     //copy mimic
+    List copy(const& other) {
+        
+    }
 
     //destructor
 
@@ -27,6 +31,11 @@ class List {
 
     //get - gets element at index
     T get(int index) {
+        if (isEmpty()) {
+            std::cout << "List is empty!\n";
+            return static_cast<T>(-1);
+        }
+
         if (index < 0 || index >= size) {
             std::cerr << "Index is out of bounds.\n";
             return static_cast<T>(-1);
@@ -43,16 +52,26 @@ class List {
 
     //set - sets element at index
     T set(int index, T element) {
-        if (index < 0 || index >= size) {
+        if ((index < 0 || index >= size) && !isEmpty()) {
             std::cerr << "Index is out of bounds.\n";
             return static_cast<T>(-1);
         }
 
         node<T>* walker = this->head;
+
+        if (isEmpty()) {
+            std::cout << "List is empty, setting at index 0.\n";
+            node<T>* set = new node<T>(element);
+            size++;
+            this->head = set;
+            
+            return static_cast<T>(-1);
+        }
         
         for (int i = 0; i < index; i++) {
             walker = walker->next;
         }
+
         T temp = walker->value;
         walker->value = element;
 
