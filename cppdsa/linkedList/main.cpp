@@ -78,6 +78,13 @@ int main() {
     // std::cout << std::boolalpha << l.isEmpty() <<'\n';
 
     //indexOf test
-    l.indexOf(8);
-    l.indexOf(5);
+    // l.indexOf(8);
+    // l.indexOf(5);
+
+    //indexesOf test
+    l.set(0, 5);
+    l.indexesOf(5);
+    l.set(2, 5);
+    l.indexesOf(5);
+
 }

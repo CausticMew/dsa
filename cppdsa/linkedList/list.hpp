@@ -245,8 +245,27 @@ class List {
     }
 
     //indexesOf - returns an array 
-    int indexesOf(T element) {
+    int* indexesOf(T element) {
+        node<T>* walker = this->head;
+        int* arr = new int[this->size];
+        int i = 0;
+        int j = 0;
 
+        std::cout << '[';
+        
+        while(walker != nullptr) {
+            if (walker->value == element) {
+                std::cout << i << ' ';
+                arr[j] = i;
+                j++;
+            }
+            walker = walker->next;
+            i++;
+        }
+
+        std::cout << "]\n";
+
+        return arr;
     }
 
     //reverse - reverses linked list
