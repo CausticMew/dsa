@@ -62,18 +62,22 @@ int main() {
     // List <int> l4(l2);
     // l4.print();
 
-    //destroy mimic
+    //destroy mimic test
     // l.destroy();
     // l.print(); 
     // std::cout << std::boolalpha << l.isEmpty() <<'\n';
 
-    //destroy mimic2
+    //destroy mimic2 test
     // l.destroy2();
     // l.print(); 
     // std::cout << std::boolalpha << l.isEmpty() <<'\n';
 
-    //destructor
+    //destructor test
     // l.~List();
     // l.print(); 
     // std::cout << std::boolalpha << l.isEmpty() <<'\n';
+
+    //indexOf test
+    l.indexOf(8);
+    l.indexOf(5);
 }

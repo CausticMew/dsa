@@ -227,8 +227,27 @@ class List {
     }
 
     //indexOf - returns index takes in element, gives the index of the first ocurrence
+    int indexOf(T element) {
+        node<T>* walker = this->head;
+        int i = 0;
+
+        while(walker != nullptr) {
+            if (walker->value == element) {
+                std::cout << "Element found at index " << i << '\n';
+                return i;
+            }
+            walker = walker->next;
+            i++;
+        }
+
+        std::cout << "Element not found!\n";
+        return -1;
+    }
 
     //indexesOf - returns an array 
+    int indexesOf(T element) {
+
+    }
 
     //reverse - reverses linked list
 
