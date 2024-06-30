@@ -43,10 +43,37 @@ int main() {
     // l2.print();
 
     //get test
-    std::cout << "Index 0: " << l.get(0) << '\n';
-    std::cout << "Index 1: " << l.get(1) << '\n';
-    std::cout << "Index 2: " << l.get(2) << '\n';
-    std::cout << "Index 0: " << l2.get(0) << '\n';
-    
+    // std::cout << "Index 0: " << l.get(0) << '\n';
+    // std::cout << "Index 1: " << l.get(1) << '\n';
+    // std::cout << "Index 2: " << l.get(2) << '\n';
+    // std::cout << "Index 0: " << l2.get(0) << '\n';
 
+    //copy constructor test
+    // List <int> l3(l);
+    // l3.print();
+    // std::cout << "Size of L3: " << l3.length() << '\n';
+    // List <int> l4(l2);
+    // l4.print();
+
+    //copy mimic2 test
+    // List <int> l3(l);
+    // l3.print();
+    // std::cout << "Size of L3: " << l3.length() << '\n';
+    // List <int> l4(l2);
+    // l4.print();
+
+    //destroy mimic
+    // l.destroy();
+    // l.print(); 
+    // std::cout << std::boolalpha << l.isEmpty() <<'\n';
+
+    //destroy mimic2
+    // l.destroy2();
+    // l.print(); 
+    // std::cout << std::boolalpha << l.isEmpty() <<'\n';
+
+    //destructor
+    // l.~List();
+    // l.print(); 
+    // std::cout << std::boolalpha << l.isEmpty() <<'\n';
 }

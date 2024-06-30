@@ -16,16 +16,78 @@ class List {
     }
 
     //copy constructor
+    List(const List<T> &other) {
+        copy(other);
+    }
 
 
     //copy mimic
-    List copy(const& other) {
-        
+    void copy(const List<T> &other) {
+        if (other.head == nullptr) {
+            this->head = nullptr;
+            this->size = 0;
+
+            return;
+        } 
+
+        node<T>* oWalker = other.head;
+        this->head = new node<T>(oWalker->value);
+        node<T>* tWalker = this->head;
+
+        while(oWalker->next != nullptr) {
+            oWalker = oWalker->next;
+            node<T>* pushed = new node<T>(oWalker->value);
+            tWalker->next = pushed;
+            tWalker = tWalker->next;
+        }
+
+        this->size = other.size;
+    }
+
+    //copy mimic2
+    void copy2(const List<T> &other) {
+        if (other.head == nullptr) {
+            this->head = nullptr;
+            this->size = 0;
+
+            return;
+        }
+
+        node<T>* oWalker = other.head;
+        this->head = new node<T>(oWalker->value);
+        node<T>* tWalker = this->head;
+
+        while(oWalker->next != nullptr) {
+            oWalker = oWalker->next;
+            push(oWalker->value);
+            tWalker = tWalker->next;
+        }
+
+        this->size = other.size;
     }
 
     //destructor
+    ~List() {
+        destroy();
+    }
 
     //destructor mimic - set size to 0
+    void destroy(){
+        while(this->head != nullptr) {
+            node<T>* walker = this->head;
+            head = walker->next;
+            size--;
+            delete walker;
+        }
+    }
+
+    //destructor mimic2 - set size to 0
+    void destroy2(){
+        while(this->head != nullptr) {
+            remove(0);
+        }
+    }
+    
 
     //operator overload = 
 
@@ -158,12 +220,11 @@ class List {
                 prev->next = nullptr;
             }
         }
+
         size--;
         delete walker;
         return value;
     }
-
-    //clear - call destructor
 
     //indexOf - returns index takes in element, gives the index of the first ocurrence
 
