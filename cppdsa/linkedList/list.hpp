@@ -247,7 +247,18 @@ class List {
     //indexesOf - returns an array 
     int* indexesOf(T element) {
         node<T>* walker = this->head;
-        int* arr = new int[this->size];
+        node<T>* sWalker = this->head;
+        int SIZE = 0;
+
+        while(sWalker != nullptr) {
+            if (sWalker->value == element) {
+                SIZE++;
+            }
+            sWalker = sWalker->next;
+        }
+
+        int* arr = new int[SIZE];
+        std::cout << "Size: " << SIZE << '\n';
         int i = 0;
         int j = 0;
 

@@ -86,5 +86,6 @@ int main() {
     l.indexesOf(5);
     l.set(2, 5);
     l.indexesOf(5);
+    l2.indexesOf(9);
 
 }
