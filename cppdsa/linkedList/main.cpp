@@ -1,9 +1,10 @@
 #include <iostream>
 #include "list.hpp"
+#include "link.hpp"
 
 int main() {
-    List <int> l;
-    List <int> l2;
+    Link <int> l;
+    Link <int> l2;
 
     //push test
     l.push(7);
@@ -18,8 +19,8 @@ int main() {
     // l.search(11);
 
     // //addAt test 
-    // l.addAt(1, 12);
-    // l.print();
+    l.addAt(1, 12);
+    l.print();
 
     //remove test
     // l.remove(1);
@@ -32,13 +33,13 @@ int main() {
     // l.print();
 
     //set test
-    l.set(1, 5);
-    l.print();
-    l.set(0, 4);
-    l.print();
-    l.set(2, 6);
-    l.print();
-    l.set(7, 8);
+    // l.set(1, 5);
+    // l.print();
+    // l.set(0, 4);
+    // l.print();
+    // l.set(2, 6);
+    // l.print();
+    // l.set(7, 8);
     // l2.set(0, 15);
     // l2.print();
 
@@ -82,10 +83,10 @@ int main() {
     // l.indexOf(5);
 
     //indexesOf test
-    l.set(0, 5);
-    l.indexesOf(5);
-    l.set(2, 5);
-    l.indexesOf(5);
-    l2.indexesOf(9);
+    // l.set(0, 5);
+    // l.indexesOf(5);
+    // l.set(2, 5);
+    // l.indexesOf(5);
+    // l2.indexesOf(9);
 
 }

@@ -1,28 +1,30 @@
-#ifndef LIST_HPP
-#define LIST_HPP
+#ifndef LINK_HPP
+#define LINK_HPP
 #include "node.hpp"
 
 template<typename T>
-class List {
+class Link {
     private:
         node<T>* head;
+        node<T>* tail;
         int size;
 
     public:
     //default constructor
-    List() {
+    Link() {
         this->head = nullptr;
+        this->tail = nullptr;
         this->size = 0;
     }
 
     //copy constructor
-    List(const List<T> &other) {
+    Link(const Link<T> &other) {
         copy(other);
     }
 
 
     //copy mimic
-    void copy(const List<T> &other) {
+    void copy(const Link<T> &other) {
         if (other.head == nullptr) {
             this->head = nullptr;
             this->size = 0;
@@ -41,11 +43,12 @@ class List {
             tWalker = tWalker->next;
         }
 
+        this->tail = other.tail;
         this->size = other.size;
     }
 
     //copy mimic2
-    void copy2(const List<T> &other) {
+    void copy2(const Link<T> &other) {
         if (other.head == nullptr) {
             this->head = nullptr;
             this->size = 0;
@@ -63,11 +66,12 @@ class List {
             tWalker = tWalker->next;
         }
 
+        this->tail = other.tail;
         this->size = other.size;
     }
 
     //destructor
-    ~List() {
+    ~Link() {
         destroy();
     }
 
@@ -88,18 +92,13 @@ class List {
         }
     }
     
+
     //operator overload = 
-    const List<T> operator= (const List<T> &other) {
-            if (this != &other) {
-                destroy();
-                copy(other);
-            }
-        }
 
     //get - gets element at index
     T get(int index) {
         if (isEmpty()) {
-            std::cout << "List is empty!\n";
+            std::cout << "Link is empty!\n";
             return static_cast<T>(-1);
         }
 
@@ -127,7 +126,7 @@ class List {
         node<T>* walker = this->head;
 
         if (isEmpty()) {
-            std::cout << "List is empty, setting at index 0.\n";
+            std::cout << "Link is empty, setting at index 0.\n";
             node<T>* set = new node<T>(element);
             size++;
             this->head = set;
@@ -161,12 +160,14 @@ class List {
         size++;
         if (this->head == nullptr) {
             this->head = pushed;
+            this->tail = tail;
         } else {
             node<T>* walker = head;
             while(walker->next != nullptr) {
                 walker = walker->next;
             }
             walker->next = pushed;
+            this->tail = pushed;
         }
     }
 
@@ -190,12 +191,18 @@ class List {
         added->next = walker->next;
         walker->next = added;
         size++;
+
+        while(walker->next != nullptr) {
+            walker = walker->next;
+        }
+
+        this->tail = walker;
     }
 
     //remove
     T remove(int index) {
         if (isEmpty()) {
-            std::cout << "List is empty!\n";
+            std::cout << "Link is empty!\n";
             return static_cast<T>(-1);
         }
 
@@ -228,6 +235,15 @@ class List {
         }
 
         size--;
+
+        node<T>* tWalker = this->head;
+
+        while(tWalker->next != nullptr) {
+            tWalker = tWalker->next;
+        }
+        
+        this->tail = tWalker;
+
         delete walker;
         return value;
     }
@@ -285,10 +301,7 @@ class List {
         return arr;
     }
 
-    //reverse - reverses linked list
-    void reverse() {
-
-    }
+    //reverse - reverses linked Link
 
     //print
     void print() {
@@ -312,6 +325,10 @@ class List {
         }
         std::cout << "Element Not Found!\n";
         return false;
+    }
+
+    void printTail() {
+        std::cout << "Tail Value: " << tail->value << '\n';
     }
 };
 
