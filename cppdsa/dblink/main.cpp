@@ -20,17 +20,25 @@ int main() {
     // //addAt test 
     l.addAt(1, 12);
     l.print();
-    l.printReverse();
+    // l.printReverse();
 
     //remove test
     // l.remove(1);
     // l.print();
+    // l.printTail();
+    // l.printReverse();
     // l.remove(0);
     // l.print();
+    // l.printTail();
+    // l.printReverse();
     // l.remove(l.length() - 1);
     // l.print();
+    // l.printTail();
+    // l.printReverse();
     // l.remove(4);
     // l.print();
+    // l.printTail();
+    // l.printReverse();
 
     //set test
     // l.set(1, 5);

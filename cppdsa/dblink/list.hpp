@@ -231,6 +231,7 @@ class List {
         if (index == 0) {
             value = walker->value;
             head = head->next;
+            head->prev = nullptr;
         } else {
             node<T>* prev = nullptr;
 
@@ -242,6 +243,7 @@ class List {
             value = walker->value;
 
             if (index < size - 1) {
+                walker->next->prev = prev;
                 prev->next = walker->next;
             } else {
                 prev->next = nullptr;
