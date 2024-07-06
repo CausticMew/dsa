@@ -20,6 +20,7 @@ int main() {
     // //addAt test 
     l.addAt(1, 12);
     l.print();
+    l.printReverse();
 
     //remove test
     // l.remove(1);
@@ -49,10 +50,10 @@ int main() {
     // std::cout << "Index 0: " << l2.get(0) << '\n';
 
     //copy constructor test
-    List <int> l3(l);
-    l3.print();
-    l3.printReverse();
-    std::cout << "Size of L3: " << l3.length() << '\n';
+    // List <int> l3(l);
+    // l3.print();
+    // l3.printReverse();
+    // std::cout << "Size of L3: " << l3.length() << '\n';
     // List <int> l4(l2);
     // l4.print();
 
@@ -90,5 +91,5 @@ int main() {
     // l2.indexesOf(9);
 
     //printReverse test
-    l.printReverse();
+    // l.printReverse();
 }

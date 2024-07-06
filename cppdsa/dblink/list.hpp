@@ -192,13 +192,17 @@ class List {
         node<T>* walker = this->head;
         
         while(walker != nullptr && in < index - 1) {
-            walker->next = walker;
+            walker = walker->next;
             in++;
         }
 
-        added->prev = walker;
         added->next = walker->next;
+        if (walker->next != nullptr) {
+            walker->next->prev = added;
+        }
         walker->next = added;
+        added->prev = walker;
+        
         
         size++;
 
