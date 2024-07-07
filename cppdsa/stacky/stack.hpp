@@ -23,12 +23,16 @@ class Stack {
 
         //copy constructor mimic
         void copy(const Stack<T> &other) {
+            if (this == &other) {
+                return;
+            }
+            
             this->size = other.size;
-
+            this->CAP = other.CAP;
             this->arr = new T[size];
 
             for (int i = 0; i < other.size; i++) {
-                this->arr[i] = other[i];
+                this->arr[i] = other.arr[i];
             }
         }
 
@@ -39,16 +43,23 @@ class Stack {
 
         //destructor mimic
         void destructor() {
-            this->size = 0;
+            std::cout << this->arr << '\n';
             delete [] arr;
+            // this->arr = nullptr;
         }
 
         //operator = 
         const Stack<T> operator= (const Stack<T> &other) {
+            std::cout << "test1 " << &other << ' ' << arr << '\n';
             if (this != &other) {
+                std::cout << "test2 " << &other << ' ' << arr << '\n';
                 destructor();
+                std::cout << "test3 " << &other << ' ' << arr << '\n';
                 copy(other);
+                std::cout << "test4 " << &other << ' ' << arr << '\n';
             }
+            return *this;
+            std::cout << "test5\n";
         }
 
         //push
@@ -61,37 +72,43 @@ class Stack {
                 }
                 destructor();
                 this->arr = temp;
-                temp = nullptr;
                 delete [] temp;
-            } else {
-                arr[size] = element;
-            }
-            size++;
+                temp = nullptr;
+            } 
+
+            arr[size++] = element;
+            
         }
 
         //pop
         T pop() {
-
+            T temp = this->arr[size - 1];
+            size--;
+            return temp;
         }
 
         //peak
         T peak() {
-
+            return this->arr[size - 1];
         }
 
         //get
         T get(int index) {
-
+            return this->arr[index];
         }
 
         //set
         void set(int index, T element) {
-
+            this->arr[index] = element;
         }
 
         //isEmpty
         bool isEmpty() {
-
+            if (size == 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
         //length
@@ -109,7 +126,12 @@ class Stack {
 
         //clear - call destructor
         void clear() {
+            destructor();
+        }
 
+        //address
+        void address() {
+            std::cout << this->arr << '\n';
         }
 };
 
