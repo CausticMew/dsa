@@ -73,38 +73,70 @@ class Queue {
 
         //dequeue
         T dequeue() {
-            
+            if (isEmpty()) {
+            std::cout << "Queue is empty!\n";
+            return static_cast<T>(-1);
+            }
+
+            T val;
+            val = this->head->value;
+            this->head = this->head->next;
+            size--;
+            return val;
         }
 
         //enqueue
         void enqueue(T element) { 
             node <T>* pushed = new node<T>(element);
+            size++;
 
-            if (size == 0) {
+            if (this->head == nullptr) {
                 this->head = pushed;
-                this->tail = tail;
+                this->tail = pushed;
+            } else {
+                 node<T>* walker = this->tail; 
+
+                pushed->prev = walker;
+                walker->next = pushed;
+                this->tail = pushed;
             }
-
-            node<T>* walker = tail; 
-
-            pushed->prev = walker;
-            walker->next = pushed;
-            this->tail = pushed;
         }
 
         //peak
         T peak() {
-            
+            return this->head->value;
         }
 
         //get
         T get(int index) {
-            
+            if (index < 0 || index >= size) {
+                std::cerr << "Index is out of bounds.\n";
+                return static_cast<T>(-1);
+            }
+
+            node <T>* walker = this->head;
+
+            for (int i = 0; i < index; i++) {
+                walker =  walker->next;
+            }
+
+            return walker->value;
         }
 
         //set
         void set(int index, T element) {
-            
+            if (index < 0 || index >= size) {
+                std::cerr << "Index is out of bounds.\n";
+                return;
+            }
+
+            node <T>* walker = this->head;
+
+            for (int i = 0; i < index; i++) {
+                walker = walker->next;
+            }
+
+            walker->value = element;
         }
 
         //isEmpty
